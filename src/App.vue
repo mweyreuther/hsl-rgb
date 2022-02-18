@@ -84,7 +84,6 @@ export default {
       const hex = dec.toString(16);
       return hex.length === 1 ? `0${hex}` : hex;
     },
-
     HSL2RGB(h, s, l) {
       s = s / 100;
       l = l / 100;
@@ -103,7 +102,6 @@ export default {
       };
       return getValues().map((v) => Math.round((v + m) * 255));
     },
-
     async incrementHue() {
       const vm = this;
       vm.hue = (vm.hue + vm.increment) % 360;
