@@ -43,7 +43,7 @@
         cursor-pointer
         blur-xl
       "
-      :style="{ backgroundColor, color }"
+      :style="{ backgroundColor, color, transform }"
       @click="isRunning = !isRunning"
     >
       {{ backgroundColor }}
@@ -69,6 +69,11 @@ export default {
   computed: {
     color() {
       return this.backgroundColor;
+    },
+    transform() {
+      const x = Math.sin(2 * Math.PI * (this.hue / 360)) * 200;
+      const y = -Math.cos(2 * Math.PI * (this.hue / 360)) * 200;
+      return `translateX(${x}px) translateY(${y}px)`;
     },
   },
   watch: {
