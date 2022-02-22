@@ -88,10 +88,6 @@ export default {
     },
   },
   methods: {
-    toHexString(dec) {
-      const hex = dec.toString(16);
-      return hex.length === 1 ? `0${hex}` : hex;
-    },
     HSL2RGB([h, s, l]) {
       h = h % 360;
       s = s / 100;
@@ -112,6 +108,10 @@ export default {
       return range[index].map((v) => Math.round((v + m) * 255));
 
       // source: https://css-tricks.com/converting-color-spaces-in-javascript/
+    },
+    toHexString(dec) {
+      const hex = dec.toString(16);
+      return hex.length === 1 ? `0${hex}` : hex;
     },
     async incrementHue() {
       const vm = this;
