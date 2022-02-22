@@ -11,7 +11,7 @@
       place-items-center
     "
   >
-    <div
+    <header
       class="
         absolute
         top-0
@@ -25,12 +25,13 @@
         text-center
         font-mono
       "
+      @dblclick="blur = !blur"
     >
       <p class="w-20">{{ hue.toFixed(1) }}&#176;</p>
       <p class="w-20">{{ saturation }}&#37;</p>
       <p class="w-20">{{ lightness }}&#37;</p>
       <p class="w-20">{{ backgroundColor }}</p>
-    </div>
+    </header>
     <div
       class="
         __color
@@ -41,8 +42,8 @@
         grid
         place-items-center
         cursor-pointer
-        blur-xl
       "
+      :class="{ 'blur-xl': blur }"
       :style="{ backgroundColor, color, transform }"
       @click="isRunning = !isRunning"
     >
@@ -58,6 +59,8 @@ export default {
   data() {
     return {
       backgroundColor: '#FFFFFF',
+      blur: true,
+
       increment: 0.1,
       isRunning: true,
 
