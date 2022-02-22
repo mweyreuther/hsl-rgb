@@ -92,28 +92,31 @@ export default {
       const hex = dec.toString(16);
       return hex.length === 1 ? `0${hex}` : hex;
     },
-    HSL2RGB(h, s, l) {
+    HSL2RGB([h, s, l]) {
+      h = h % 360;
       s = s / 100;
       l = l / 100;
       const c = (1 - Math.abs(2 * l - 1)) * s;
       const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
       const m = l - c / 2;
 
-      const getValues = () => {
-        if (0 <= h && h < 60) return [c, x, 0];
-        if (60 <= h && h < 120) return [x, c, 0];
-        if (120 <= h && h < 180) return [0, c, x];
-        if (180 <= h && h < 240) return [0, x, c];
-        if (240 <= h && h < 300) return [x, 0, c];
-        if (300 <= h && h < 360) return [c, 0, x];
-        return [0, 0, 0];
-      };
-      return getValues().map((v) => Math.round((v + m) * 255));
+      const index = Math.floor(h / 60);
+      const range = [
+        [c, x, 0],
+        [x, c, 0],
+        [0, c, x],
+        [0, x, c],
+        [x, 0, c],
+        [c, 0, x],
+      ];
+      return range[index].map((v) => Math.round((v + m) * 255));
+
+      // source: https://css-tricks.com/converting-color-spaces-in-javascript/
     },
     async incrementHue() {
       const vm = this;
       vm.hue = (vm.hue + vm.increment) % 360;
-      const rgb = vm.HSL2RGB(vm.hue, vm.saturation, vm.lightness);
+      const rgb = vm.HSL2RGB([vm.hue, vm.saturation, vm.lightness]);
       vm.backgroundColor = rgb.reduce((t, c) => {
         return t + vm.toHexString(c);
       }, '#');

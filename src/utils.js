@@ -39,9 +39,9 @@ function RGB2HSL(r, g, b) {
   return [hue, +(saturation * 100).toFixed(1), +(lightness * 100).toFixed(1)];
 }
 
-function sleep(duration) {
+function sleep(duration = 0) {
   return new Promise((resolve, reject) => {
-    if (!duration) resolve(true);
+    // if (!duration) resolve(true);
     setTimeout(() => {
       resolve(true);
     }, duration);
