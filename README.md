@@ -6,9 +6,9 @@
 
 language features:
 
-- Array destructuring
-- Array methods map & reduce
-- Async & await
+- array destructuring
+- array methods map & reduce
+- async & await
 - recursive function call
 - css transforms
 - tailwind css
