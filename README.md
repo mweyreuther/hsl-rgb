@@ -13,5 +13,5 @@ language features:
 - css transforms
 - tailwind css
 
-[improved method of: https://css-tricks.com/converting-color-spaces-in-javascript/](https://css-tricks.com/converting-color-spaces-in-javascript/)
+[modified method of: https://css-tricks.com/converting-color-spaces-in-javascript/](https://css-tricks.com/converting-color-spaces-in-javascript/)
  
